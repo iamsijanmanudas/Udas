@@ -10,7 +10,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
         ArrayList<String> words = readWords("F:/School/Java/Assignment1/Udas/res/words.txt");
-        HashMap<String , Integer> wordCounter = buildHashMap(words);
+        HashMap<String , Integer> wordCounter = buildHashMap(words); //create a hashmap to count the occurance of each word
         // create a function that reads from the hashmap and writes it to a html file with word count and word to a html table format
         createHTMLFile(wordCounter);
         System.out.println(words);
@@ -29,6 +29,36 @@ public class App {
             FileWriter FileWriter = new FileWriter (file);
             StringBuilder builder = new StringBuilder();
             builder.append("<h1>Word Count<h1>");
+            
+            builder.append("<html>");
+            builder.append("<head>");
+            builder.append("<style>");
+            builder.append("table {");
+            builder.append("  font-family: arial, sans-serif;");
+            builder.append("  border-collapse: collapse;");
+            builder.append("  width: 100%;");
+            builder.append("}");
+            builder.append("td, th {");
+            builder.append("  border: 1px solid #dddddd;");
+            builder.append("  text-align: left;");
+            builder.append("  padding: 8px;");
+            builder.append("}");
+            builder.append("tr:nth-child(even) {");
+            builder.append("  background-color: #dddddd;");
+            builder.append("}");
+            builder.append("</style>");
+            builder.append("</head>");
+            builder.append("<body>");
+           /*
+            
+            builder.append("<html>");
+            builder.append("<head>");
+            builder.append("<link rel=\"stylesheet\" type=\"text/css\" href=\"res/style.css\">");
+            builder.append("</head>");
+            builder.append("<body>"); 
+*/
+           // Or i could have used a css file and linked it with this .js file to import the GUI for the table
+            
 
             builder.append("<table>");
 
@@ -41,6 +71,10 @@ public class App {
             }
 
             builder.append("</table>");
+
+            builder.append("</body>");
+            builder.append("</html>");
+
             FileWriter.append(builder.toString());
             FileWriter.close();
 
